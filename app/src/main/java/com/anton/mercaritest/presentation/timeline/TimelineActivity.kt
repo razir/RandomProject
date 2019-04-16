@@ -7,8 +7,6 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.Observer
 import com.anton.mercaritest.R
 import com.anton.mercaritest.data.entity.Category
-import com.anton.mercaritest.extensions.nonNull
-import com.anton.mercaritest.extensions.observe
 import com.anton.mercaritest.presentation.base.BaseActivity
 import com.anton.mercaritest.presentation.timeline.product.ProductListFragment
 import kotlinx.android.synthetic.main.activity_timeline.*
@@ -49,9 +47,9 @@ class TimelineActivity : BaseActivity() {
             }
         })
 
-        viewModel.showCategoriesLoading.nonNull().observe(this) {
+        viewModel.showCategoriesLoading.observe(this, Observer {
             timelineProgress.visibility = if (it) View.VISIBLE else View.GONE
-        }
+        })
     }
 
     private fun initViews() {

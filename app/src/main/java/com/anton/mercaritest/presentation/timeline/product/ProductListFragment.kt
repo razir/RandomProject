@@ -1,26 +1,23 @@
 package com.anton.mercaritest.presentation.timeline.product
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import com.anton.mercaritest.R
 import com.anton.mercaritest.data.entity.Category
-import com.anton.mercaritest.extensions.nonNull
-import com.anton.mercaritest.extensions.observe
+import com.anton.mercaritest.data.entity.Product
 import com.anton.mercaritest.presentation.base.BaseFragment
 import com.anton.mercaritest.utils.GridItemDecorator
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_products.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
-import android.content.res.Configuration
-import android.widget.Toast
-import com.anton.mercaritest.data.entity.Product
 
 private const val SPAN_COUNT_LANDSCAPE = 3
 private const val SPAN_COUNT_PORTRAIT = 2
@@ -87,9 +84,9 @@ class ProductListFragment : BaseFragment() {
     }
 
     private fun initViewModel() {
-        viewModel.showProductsLoading.nonNull().observe(viewLifecycleOwner) {
+        viewModel.showProductsLoading.observe(viewLifecycleOwner, Observer {
             productsProgress.visibility = if (it) View.VISIBLE else View.GONE
-        }
+        })
 
         viewModel.hideSwipeRefresh.observe(viewLifecycleOwner, Observer {
             productsSwipe.isRefreshing = false
@@ -104,11 +101,11 @@ class ProductListFragment : BaseFragment() {
             }
         })
 
-        viewModel.errorAlert.nonNull().observe(viewLifecycleOwner) { errorData ->
+        viewModel.errorAlert.observe(viewLifecycleOwner, Observer { errorData ->
             context?.let {
                 showSnackBar(errorData.getShortMsg(it))
             }
-        }
+        })
 
         viewModel.errorState.observe(viewLifecycleOwner, Observer {
             it?.let {
