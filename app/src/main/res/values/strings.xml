@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MercariTest</string>
+    <string name="errorNoConnectionLong">Please check your internet connection</string>
+    <string name="errorNoConnectionShort">No internet connection</string>
+    <string name="errorApiShort">Server error</string>
+    <string name="timelineSell">Sell</string>
+    <string name="errorTryAgain">Try again</string>
 </resources>

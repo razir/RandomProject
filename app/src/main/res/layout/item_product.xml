@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
+
+    <ImageView
+        android:id="@+id/productImage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/product_img_gradient"
+        app:layout_constraintBottom_toBottomOf="@id/productImage"
+        app:layout_constraintTop_toTopOf="@id/productNumLikes" />
+
+    <ImageView
+        android:id="@+id/productLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/badge_soldout"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/productImage"
+        app:layout_constraintTop_toTopOf="@+id/productImage" />
+
+    <TextView
+        android:id="@+id/productNumLikes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:drawableStart="@drawable/ic_like_18"
+        android:drawablePadding="2dp"
+        android:textAppearance="@style/SmallText"
+        android:textColor="@color/textPrimaryLight"
+        app:layout_constraintBaseline_toBaselineOf="@id/productNumComments"
+        app:layout_constraintEnd_toStartOf="@id/productNumComments" />
+
+    <TextView
+        android:id="@+id/productNumComments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/itemProductContentMargin"
+        android:drawableStart="@drawable/ic_comments_18"
+        android:drawablePadding="2dp"
+        android:textAppearance="@style/SmallText"
+        android:textColor="@color/textPrimaryLight"
+        app:layout_constraintBottom_toBottomOf="@+id/productImage"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/productName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/itemProductContentMargin"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAppearance="@style/MediumText"
+        android:textColor="@color/textPrimaryDark"
+        app:layout_constraintTop_toBottomOf="@+id/productImage" />
+
+    <TextView
+        android:id="@+id/productPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/itemProductContentMargin"
+        android:layout_marginBottom="@dimen/itemProductContentMargin"
+        android:textAppearance="@style/MediumText"
+        android:textColor="@color/textSecondaryDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productName" />
+</androidx.constraintlayout.widget.ConstraintLayout>

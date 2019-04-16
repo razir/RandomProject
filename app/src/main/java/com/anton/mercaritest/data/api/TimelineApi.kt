@@ -6,7 +6,7 @@ import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Url
 
-interface MercariApi {
+interface TimelineApi {
 
     @GET("master.json")
     fun getCategories(): Single<List<Category>>

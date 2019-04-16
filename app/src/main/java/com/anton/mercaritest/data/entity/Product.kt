@@ -1,15 +1,23 @@
 package com.anton.mercaritest.data.entity
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-data class Product(
-    val id: String,
-    val name: String? = null,
-    val status: String? = null,
+const val PRODUCT_STATUS_SOLD_OUT = "sold_out"
+
+@Entity
+class Product {
+    @PrimaryKey
+    var id: String = ""
+    var name: String? = null
+    var status: String? = null
     @SerializedName("num_likes")
-    val numLikes: Long = 0,
+    var numLikes: Long = 0
     @SerializedName("num_comments")
-    val numComments: Long = 0,
-    val price: Long = 0,
-    val photo: String? = null
-)
+    var numComments: Long = 0
+    var price: Long = 0
+    var photo: String? = null
+
+    var categoryHash: String? = null
+}

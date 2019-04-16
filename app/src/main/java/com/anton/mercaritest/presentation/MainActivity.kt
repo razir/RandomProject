@@ -1,7 +1,8 @@
-package com.anton.mercaritest
+package com.anton.mercaritest.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.anton.mercaritest.R
 
 class MainActivity : AppCompatActivity() {
 

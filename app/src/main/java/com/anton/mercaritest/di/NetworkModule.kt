@@ -2,6 +2,8 @@ package com.anton.mercaritest.di
 
 import com.anton.mercaritest.data.api.OkHttpClientBuilder
 import com.anton.mercaritest.data.api.RetrofitClientBuilder
+import com.anton.mercaritest.data.manager.ConnectivityStatusManager
+import com.anton.mercaritest.data.manager.ConnectivityStatusManagerImpl
 import org.koin.dsl.module.module
 import retrofit2.CallAdapter
 import retrofit2.Converter
@@ -29,4 +31,6 @@ val networkModule = module {
             converterFactory = get(DI_GSON_FACTORY)
         )
     }
+
+    factory<ConnectivityStatusManager> { ConnectivityStatusManagerImpl(context = get()) }
 }

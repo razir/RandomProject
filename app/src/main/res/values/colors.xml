@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#666</color>
+    <color name="colorPrimaryDark">#333</color>
+    <color name="colorAccent">#F44336</color>
+    <color name="colorAccent70">#80F44336</color>
+
+    <color name="textPrimaryDark">#333333</color>
+    <color name="textSecondaryDark">#666666</color>
+    <color name="textPrimaryLight">@android:color/white</color>
+    <color name="productImgPlaceholder">#ccc</color>
+    <color name="timelineBg">#eee</color>
 </resources>
