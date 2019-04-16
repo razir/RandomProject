@@ -41,7 +41,6 @@ class ProductListFragment : BaseFragment() {
     })
 
     private lateinit var productsAdapter: ProductsAdapter
-    private var errorSnackbar: Snackbar? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_products, container, false)
@@ -118,9 +117,7 @@ class ProductListFragment : BaseFragment() {
     }
 
     private fun showSnackBar(message: String) {
-        errorSnackbar = Snackbar.make(productsRoot, message, Snackbar.LENGTH_SHORT).apply {
-            show()
-        }
+        Snackbar.make(productsRoot, message, Snackbar.LENGTH_SHORT).show()
     }
 
     private fun showProductDetails(product: Product) {
