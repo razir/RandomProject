@@ -58,7 +58,6 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="20dp"
         android:text="@string/timelineSell"
-        android:textSize="20sp"
         android:visibility="gone"
         app:backgroundTint="@color/colorAccent"
         app:cornerRadius="10dp"
