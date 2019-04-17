@@ -1,8 +1,8 @@
 package com.anton.mercaritest.di
 
 import com.anton.mercaritest.constant.API_BASE_URL
-import com.anton.mercaritest.data.api.TimelineApi
 import com.anton.mercaritest.data.api.RetrofitClientBuilder
+import com.anton.mercaritest.data.api.TimelineApi
 import com.anton.mercaritest.data.entity.Category
 import com.anton.mercaritest.data.source.CategoriesRepository
 import com.anton.mercaritest.data.source.CategoriesRepositoryImpl
@@ -14,21 +14,27 @@ import com.anton.mercaritest.presentation.timeline.product.ProductsListViewModel
 import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 
+const val DI_SCOPE_TIMELINE = "di_timeline_scope"
+
 val timelineModule = module {
 
     single<TimelineApi> {
         get<RetrofitClientBuilder>(DI_BASE_RETROFIT_BUILDER).build(API_BASE_URL)
     }
 
-    factory<CategoriesRepository> { CategoriesRepositoryImpl(timelineApi = get()) }
+    scope<CategoriesRepository>(DI_SCOPE_TIMELINE) {
+        CategoriesRepositoryImpl(timelineApi = get())
+    }
 
-    factory<ProductsRepository> { ProductsRepositoryImpl(timelineApi = get(), productsDao = get()) }
+    scope<ProductsRepository>(DI_SCOPE_TIMELINE) {
+        ProductsRepositoryImpl(timelineApi = get(), productsDao = get())
+    }
 
-    factory<GetCategoriesUseCase> { GetCategoriesUseCaseImpl(categoriesRepository = get()) }
+    scope<GetCategoriesUseCase>(DI_SCOPE_TIMELINE) { GetCategoriesUseCaseImpl(categoriesRepository = get()) }
 
-    factory<CleanProductsCacheUseCase> { CleanProductsCacheUseCaseImpl(productsRepository = get()) }
+    scope<CleanProductsCacheUseCase>(DI_SCOPE_TIMELINE) { CleanProductsCacheUseCaseImpl(productsRepository = get()) }
 
-    factory<GetProductsUseCase> { GetProductsUseCaseImpl(productsRepository = get()) }
+    scope<GetProductsUseCase>(DI_SCOPE_TIMELINE) { GetProductsUseCaseImpl(productsRepository = get()) }
 
     viewModel {
         TimelineViewModel(
@@ -45,4 +51,5 @@ val timelineModule = module {
             category = category
         )
     }
+
 }

@@ -55,13 +55,11 @@ class TimelineViewModel(
             .subscribe({
                 showCategoriesLoading.value = false
                 categories.value = it
-
             }, {
                 showCategoriesLoading.value = false
                 errorState.value = it.toErrorData()
             })
             .addTo(compositeDisposable)
-
     }
 
 

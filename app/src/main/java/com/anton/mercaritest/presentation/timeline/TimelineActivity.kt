@@ -7,9 +7,12 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.Observer
 import com.anton.mercaritest.R
 import com.anton.mercaritest.data.entity.Category
+import com.anton.mercaritest.di.DI_SCOPE_TIMELINE
 import com.anton.mercaritest.presentation.base.BaseActivity
 import com.anton.mercaritest.presentation.timeline.product.ProductListFragment
 import kotlinx.android.synthetic.main.activity_timeline.*
+import org.koin.android.scope.ext.android.bindScope
+import org.koin.android.scope.ext.android.getOrCreateScope
 import org.koin.android.viewmodel.ext.android.viewModel
 import kotlin.properties.Delegates
 
@@ -22,6 +25,7 @@ class TimelineActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_timeline)
+        bindScope(getOrCreateScope(DI_SCOPE_TIMELINE))
         initViews()
         initViewModel()
     }
