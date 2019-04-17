@@ -78,17 +78,11 @@ class TimelineActivity : BaseActivity() {
 
     inner class ProductCategoryAdapter : FragmentPagerAdapter(supportFragmentManager) {
         var categories: List<Category> by Delegates.observable(emptyList()) { _, _, _ ->
-            fragments.clear()
-            categories.forEach {
-                fragments.add(ProductListFragment.newInstance(it))
-            }
             notifyDataSetChanged()
         }
 
-        private val fragments = mutableListOf<ProductListFragment>()
-
         override fun getItem(position: Int): Fragment {
-            return fragments[position]
+            return ProductListFragment.newInstance(categories[position])
         }
 
         override fun getCount() = categories.size
