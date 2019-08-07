@@ -5,7 +5,7 @@ import android.os.Parcelable
 
 class Category() : Parcelable {
     val name: String = ""
-    val data: String? = null
+    var data: String? = null
 
     constructor(parcel: Parcel) : this() {
     }
