@@ -20,7 +20,7 @@
 
 - Q: Why there are no get methods returning LiveData instead of MutableLiveData as Google suggest?
 - A: Actually there are 2 reasons: 
-  * I see no reaso why somebody would try to change it from the view without having a bottle of whiskey before
+  * I see no reason why somebody would try to change it from the view without having a bottle of whiskey before
   * On big projects, there are usually many livedata fields and these methods just make ViewModel less readable and too long IMHO.
 
 
