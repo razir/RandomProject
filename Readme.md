@@ -1,4 +1,6 @@
-# Task: “Create a Mini Mercari App”
+# Task: “Create a Mini Mercari App” 
+
+### Details: [here](SKILL_TEST.en.md)
 
 ### Highlights: 
 - Total time spent* ~ 11 hours
